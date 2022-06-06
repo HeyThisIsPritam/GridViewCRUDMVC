@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MachineTestMVC.Models.UserDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<h1>Machine Test</h1>
+<div id="PlaceHolderHere"></div>
+
+<table class="table">
+    <asp:UpdatePanel>
+        <Triggers>
+            <thead>
+            <td>
+                <a asp-action="Create" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Add Member</a>
+            </td>
+            <td>
+                
+                <a asp-action="ShowAll" class="btn btn-outline-primary"><i class="bi bi-eye"></i>Show All</a>
+                <a asp-action="DeleteAll" class="btn btn-danger text-white"><i class="bi bi-trash"></i>Remove All</a>
+            </td>
+
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Birthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+        </Triggers>
+        <ContentTemplate>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Birthday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Time)
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#editUser" data-url="@Url.Action($"Edit/{item.Id}")"><i class="bi bi-pencil-square"></i>Edit</button>
+
+                            <a asp-action="Delete" class="btn btn-danger text-white" onclick=" return confirm('Are You Sure You Want To delete User ');" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+
+
+
+                }
+            </tbody>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</table>
+
+

@@ -1,0 +1,51 @@
+﻿@model UserDetail
+<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+<div class="modal fade" id="editUser">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="editUserlabel">Edit User</h4>
+                <button class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="modal-body">
+                        <form action="Edit">
+                            <div class="form-group">
+                                <input type="hidden" asp-for="@Model.Id" />
+                                <label asp-for="Name"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gender"></label>
+                                <input asp-for="Gender" class="form-control" />
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Birthday"></label>
+                                <input asp-for="Birthday" class="form-control" />
+                                <span asp-validation-for="Birthday" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Address"></label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </form>
+                    </div>
+                </ContentTemplate>
+                <Triggers>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" data-save="modal">Update</button>
+                    </div>
+                </Triggers>
+            </asp:UpdatePanel>
+
+
+        </div>
+    </div>
+</div>
