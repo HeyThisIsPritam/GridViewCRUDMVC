@@ -56,6 +56,7 @@ namespace MachineTest.Services
                 foreach (var item in user)
                 {
                     item.IsActive = false;
+                   item.Status = "Deactive";
                 }
                 _context.SaveChanges();
                 st = true;
