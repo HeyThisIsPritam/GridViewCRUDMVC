@@ -13,9 +13,9 @@ namespace MachineTest.Services
     public class HomeService : IHomeService
     {
         private readonly MachineTestMVCContext _context;
-        public HomeService(MachineTestMVCContext context)
+        public HomeService(MachineTestMVCContext mvccontext)
         {
-            _context = context;
+            _context = mvccontext;
         }
         public async Task AddAsync(UserDetail user)   
         {
